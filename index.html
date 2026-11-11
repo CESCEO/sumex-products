@@ -208,7 +208,7 @@ footer b{color:#fff}footer .small{margin-top:14px;font-size:12.5px;color:#6f8599
   footer{padding-bottom:110px}
   .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#ffffffee;backdrop-filter:blur(12px);border-top:1px solid var(--line)}
   .mbar a{flex:1;text-align:center;font-weight:800;font-size:15.5px;padding:14px;border-radius:13px}
-  .mbar .t{background:var(--navy);color:#fff}.mbar .c{flex:0 0 auto;background:var(--bg);color:var(--navy);padding:14px 18px}
+  .indemo .mbar{display:none}.mbar .t{background:var(--navy);color:#fff}.mbar .c{flex:0 0 auto;background:var(--bg);color:var(--navy);padding:14px 18px}
 }
 </style>
 </head>
@@ -394,7 +394,7 @@ var API = "https://formsubmit.co/ajax/ces@sumex.co.kr";
   Array.prototype.forEach.call(document.querySelectorAll(".rv"), function (el) { if (io) io.observe(el); else el.classList.add("in"); });
   var links = Array.prototype.slice.call(document.querySelectorAll("#nav a:not(.cta)"));
   var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
-  function spy() { var y = window.scrollY + 120, cur = -1; secs.forEach(function (s, i) { if (s && s.offsetTop <= y) cur = i; }); var dm = document.getElementById("demo"); if (dm && dm.offsetTop <= y) cur = -1; links.forEach(function (a, i) { a.classList.toggle("on", i === cur); }); }
+  function spy() { var y = window.scrollY + 120, cur = -1; secs.forEach(function (s, i) { if (s && s.offsetTop <= y) cur = i; }); var dm = document.getElementById("demo"); if (dm && dm.offsetTop <= y) cur = -1; document.body.classList.toggle("indemo", !!dm && dm.offsetTop - window.innerHeight * 0.4 <= window.scrollY); links.forEach(function (a, i) { a.classList.toggle("on", i === cur); }); }
   window.addEventListener("scroll", spy, { passive: true }); spy();
 })();
 document.getElementById("f").addEventListener("submit", function (e) {
